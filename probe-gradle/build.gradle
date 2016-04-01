@@ -11,4 +11,4 @@ dependencies {
     compile 'com.android.tools.build:gradle:1.5.0'
 }
 
-apply from: "${rootDir}/gradle/scripts/gradle-plugin-mvn-push.gradle"
+apply from: "${projectDir}/../gradle/scripts/gradle-plugin-mvn-push.gradle"
