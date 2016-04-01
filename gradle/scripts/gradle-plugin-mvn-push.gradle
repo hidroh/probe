@@ -114,6 +114,6 @@ afterEvaluate { project ->
 
     artifacts {
         archives pluginSourcesJar
-        archives pluginJavadocsJar
+        // archives pluginJavadocsJar
     }
 }
