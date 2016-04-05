@@ -1,4 +1,15 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath 'org.lucasr:probePlugin:1.0-SNAPSHOT'
+    }
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'org.lucasr.probe'
 
 android {
     compileSdkVersion 23
@@ -9,7 +20,15 @@ android {
     }
 }
 
+probe {
+    buildVariants {
+        debug {
+            enabled = true
+        }
+    }
+}
+
 dependencies {
     compile project(':library')
-    provided project(':probe-gradle')
 }
+

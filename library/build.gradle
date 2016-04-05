@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
 
 android {
     compileSdkVersion 23
@@ -8,20 +7,4 @@ android {
 
 dependencies {
     compile 'com.google.dexmaker:dexmaker:1.1'
-}
-
-apply from: "${projectDir}/../gradle/scripts/gradle-mvn-push.gradle"
-
-afterEvaluate { project ->
-    uploadArchives {
-        repositories {
-            mavenDeployer {
-                pom.whenConfigured {
-                    def dep = dependencies.find { it.groupId == 'com.google.dexmaker' }
-                    dep.optional = true
-                    dep.scope = null
-                }
-            }
-        }
-    }
 }

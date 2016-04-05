@@ -39,13 +39,10 @@ class ProbePlugin implements Plugin<Project> {
         this.instantiator = instantiator
     }
 
+    @Override
     void apply(Project project) {
         if (!project.plugins.hasPlugin(AppPlugin)) {
             throw new StopExecutionException("'android' plugin has to be applied before")
-        }
-
-        project.dependencies {
-            compile 'org.lucasr.probe:probe:0.1.4-SNAPSHOT'
         }
 
         def buildVariants = project.container(BuildVariantConfig,

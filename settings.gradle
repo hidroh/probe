@@ -1,3 +1,7 @@
+exec {
+    workingDir 'probe-gradle'
+    commandLine './gradlew', 'uploadArchives'
+}
+
 include ':library'
-include ':probe-gradle'
 include ':sample'
