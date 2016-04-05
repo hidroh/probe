@@ -16,15 +16,12 @@
 
 package org.lucasr.probe.internal
 
-import com.android.annotations.NonNull;
+import com.android.annotations.NonNull
 import com.squareup.javawriter.JavaWriter
 
 import javax.lang.model.element.Modifier
 
-import static javax.lang.model.element.Modifier.FINAL
-import static javax.lang.model.element.Modifier.PRIVATE
-import static javax.lang.model.element.Modifier.PROTECTED
-import static javax.lang.model.element.Modifier.PUBLIC
+import static javax.lang.model.element.Modifier.*
 
 class ViewProxyGenerator {
     private static final String[] PROXY_IMPORTS = [
@@ -170,7 +167,7 @@ class ViewProxyGenerator {
     }
 
     private static void generateOnMeasureMethod(JavaWriter javaWriter) {
-        beginOnMeasureMethod(javaWriter, METHOD_ON_MEASURE, PROTECTED)
+        beginOnMeasureMethod(javaWriter, METHOD_ON_MEASURE, PUBLIC)
         generateInterceptorConditional(javaWriter, METHOD_ON_MEASURE, PARAM_WIDTH_SPEC,
                 PARAM_HEIGHT_SPEC)
         javaWriter.endMethod()
@@ -189,7 +186,7 @@ class ViewProxyGenerator {
     }
 
     private static void generateOnLayoutMethod(JavaWriter javaWriter) {
-        beginOnLayoutMethod(javaWriter, METHOD_ON_LAYOUT, PROTECTED)
+        beginOnLayoutMethod(javaWriter, METHOD_ON_LAYOUT, PUBLIC)
         generateInterceptorConditional(javaWriter, METHOD_ON_LAYOUT, PARAM_CHANGED,
                 PARAM_LEFT, PARAM_TOP, PARAM_RIGHT, PARAM_BOTTOM)
         javaWriter.endMethod()
@@ -215,7 +212,7 @@ class ViewProxyGenerator {
         javaWriter.emitStatement("super.%s(%s)", METHOD_DRAW, PARAM_CANVAS)
         javaWriter.endMethod()
 
-        beginDrawMethod(javaWriter, METHOD_ON_DRAW, PROTECTED)
+        beginDrawMethod(javaWriter, METHOD_ON_DRAW, PUBLIC)
         generateInterceptorConditional(javaWriter, METHOD_ON_DRAW, PARAM_CANVAS)
         javaWriter.endMethod()
 
