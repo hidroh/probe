@@ -29,6 +29,10 @@ import org.lucasr.probe.internal.LayoutResourceParser
 import org.lucasr.probe.internal.ViewProxyGenerator
 
 class ProbeTask extends DefaultTask {
+    private static final HIDDEN_CLASSES = [
+        "android.widget.DateTimeView"
+    ]
+
     @NonNull
     ApplicationVariant variant
 
@@ -81,6 +85,9 @@ class ProbeTask extends DefaultTask {
         layoutFiles.each { layoutFile ->
             Set<String> viewClassNames = LayoutResourceParser.parse(layoutFile)
             for (String viewClassName : viewClassNames) {
+                if (HIDDEN_CLASSES.contains(viewClassName)) {
+                    continue
+                }
                 String filename = ViewProxyGenerator.filenameForClassName(viewClassName)
                 File proxyFile = new File(outputDir, filename)
 
